@@ -1,0 +1,90 @@
+.outras-informacoes {
+	.theme--light.v-sheet {
+		border-color: #fff;
+		background-color: #f3f3f3b0;
+		padding: 25px;
+		border-top: 1px solid #eaeaea;
+	}
+
+	.alert-area {
+		.v-alert.warning {
+			text-align: left;
+
+			&:last-child {
+				margin-bottom: 25px;
+			}
+
+			a {
+				color: #187ad2;
+			}
+		}
+	}
+
+	.fieldset-area {
+		margin-bottom: 20px;
+
+		fieldset {
+			background-color: #fafafa;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.v-expansion-panel {
+		box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 0px 2px 0px rgba(0, 0, 0, 0.1), 0px 0px 1px 1px rgba(0, 0, 0, 0.01);
+	}
+
+	.v-expansion-panel__header {
+		.descricao {
+			span {
+				float: left;
+			}
+
+			.help {
+				img {
+					height: 20px;
+					margin-top: 1px;
+					margin-left: 8px;
+					float: left;
+				}
+			}
+		}
+	}
+
+	.v-expansion-panel__body {
+		.v-input__slot {
+			margin-bottom: 5px;
+		}
+
+		.v-input--checkbox {
+			margin-top: 0;
+			margin-bottom: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			label {
+				font-size: 14px;
+			}
+
+			.v-ripple__container {
+				margin-left: 1px;
+			}
+
+			.v-input__slot {
+				align-items: initial;
+			}
+
+			.v-input--selection-controls__input {
+				.v-icon {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+
+
+}

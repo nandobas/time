@@ -1,0 +1,14 @@
+.v-stepper__content {
+	z-index: 10000;
+	overflow: hidden;
+}
+
+.v-window__container {
+	overflow: hidden;
+}
+
+.v-stepper__step--editable:hover {
+	.v-stepper__step__step.primary {
+		background: $primary !important;
+	}
+}

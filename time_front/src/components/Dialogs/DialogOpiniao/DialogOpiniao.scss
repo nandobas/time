@@ -1,0 +1,27 @@
+.dialog-opiniao {
+
+	.theme--light.v-text-field--outline>.v-input__control>.v-input__slot,
+	.theme--light.v-text-field--outline>.v-input__control>.v-input__slot:hover,
+	.theme--light.v-text-field--outline:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover {
+		border: 1px solid #ced4da;
+		font-size: 14px;
+		background: white !important;
+	}
+
+	.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+		&.send {
+			background-color: #64b5f6;
+			box-shadow: 1px 1px 10px 1px rgba(80, 136, 146, 0.2);
+
+			.icon {
+				padding: 8px 0px 8px 5px;
+				background-color: #539fdc;
+			}
+		}
+	}
+
+	.v-text-field__details {
+		padding: 0;
+		margin: 0;
+	}
+}

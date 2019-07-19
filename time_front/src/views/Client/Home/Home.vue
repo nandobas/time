@@ -1,0 +1,103 @@
+<template>
+	<v-content class="home">
+		<v-layout row wrap>
+			<div class="flex sm12 md6 bloco">
+
+				<a href='http://www.econeteditora.com.br/'>
+					<img alt="Logo Econet" src="@/assets/img/logo_econet.jpeg" class='logo' />
+				</a>
+
+				<p>Bem vindo ao</p>
+
+				<h1>Simulador de Planejamento Tributário Econet</h1>
+
+				<div class="text">
+					Simulador de cálculos com todas as informações necessárias para que você possa efetuar um
+					comparativo completo em relação a todos os cenários e regimes tributários.
+				</div>
+
+				<div class="button-area">
+					<!--<a @click='verificarLogin253()'>
+                        <v-btn :disabled="blLoginAndamento">
+                             Fazer login
+                             <v-progress-circular v-show="blLoginAndamento" class="margin-loading" indeterminate color="primary" :size="20" :width="2"></v-progress-circular>
+                        </v-btn>
+                     </a>-->
+					<a href='http://www.econeteditora.com.br/acesso_spt_v2.php'>
+						<v-btn>
+							Fazer login
+						</v-btn>
+					</a>
+					<v-btn>Solicitar acesso demonstrativo</v-btn>
+				</div>
+
+				<v-tooltip right open-delay="0" close-delay="0">
+					<template v-slot:activator="{ on }">
+						<a class='help' href='http://www.econeteditora.com.br/solucoes/index.php' target='_blank'>
+							<v-btn left fab v-on="on">
+								<img class="icon" src='@/assets/img/support.svg' />
+							</v-btn>
+						</a>
+					</template>
+					<span style='font-size: 14px;'>Suporte técnico</span>
+				</v-tooltip>
+
+			</div>
+			<div class="flex sm12 md6 bloco bloco2">
+				<v-layout row wrap>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACjlBMVEUAAABapaVdnapenqpenqpenqpenqpdnqoA//9tkrZenapenqpZmaZenqpdnqpjnKpenaqAgIBenqpenapdnatfnapenqlenalen6penqpdn6lfnqlenqpenqpbnqpgn6hdn6lenqpAgL9fn6penqpdnapfnqlfoKxVqqpenapdnqlfnqlenqpen6pfnqlenqpfoKtenatenqpen6penapfn6tfnatenqpenqpfn6pfnqpen6pdn6tfnapfnatenapdn6lenqpdm6hdm6penqpenqpenqtdnqpgn6peoapenqpenqpdnqlinq1inbFdnqpenqpenqpenalenqpcnKpenqpcnqhcnqtdnqpgn6penqten6lenqpenqlanK1fnalfnqtenapen6penqpenqtenqtdnqlfnqpmmZlfnalenqpenqpbpKRen6pfnqpdnqpenalenqpgn6tfnatenqldnaxen6tfnqphnqpfnqpenqpcma1fnqpen6lem6xcn6teoqpdnaldnqpdoqJdn6penqpen6pgn69enqpenqpZm6ZfnKlmmbNenqpgn6pfnqpenqtfnqpmmapenqpcnahen6tenalenapgn59enqpdnqtfoKpenqpVqqpVlaphnqdenKxgn6xenqpdnqxfoKlenapenqpdoq5enqpVqqpenqlenqpinadenapenqpenqpfnKpdnqlenqpdn6tfnqtfoKhdn6pcn6lenqpenqpenqpfnqlenqlgn6xenqtdn6tenqpenqpeoa5dn6lenqpcn6penqpdnqtfnqpenqpdnKhenatenqpenKpfnqtenqpdnqlenqten6penqpdnapenqtenqpgn6penqoAAACBI5l/AAAA2HRSTlMAEWOx2vXvfgEHeJMUwJkS2QK7xHNORIBa7Ep03PAqNWXqBJ+ot4wrBryGbv7Jcd9DmlRydZRe61ec1W9Vr0aNTfspIfzFnb8YG/OQRyINP/r9fe4kszI63TBPYpZfH1Z8osG+Z6mDqgWn+MwOuWbKlfRAW540as0V6NIZaXcuPR5rQgus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">
+						<h3>Fácil</h3>
+						<div class="text">
+							Preencha os campos do sistema ou importe um arquivo da ECF
+						</div>
+					</v-flex>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACXlBMVEUAAABdnqlen6penqpfnalapaVenqpenqpmmapfnqpbpKRenqpenatgn69tkrZenqpenqpVqqpdnqpfnqpenqldnKhenqpfn6qAgIBenqpenqphnqpfnqlenqleoqpenqpenqoA//9enqpenqpfoKhdn6tdnqtjnKpfnqpenqpmmZlenqlenqpenapgn6tenqpenqpenqpinbFenqtenqtem6xenqpfnqpenqpenqpeoapen6penqtanK1enqpenqpbnqpeoa5enqpenapgn59enapdnqpenqlmmbNenqpfnqlcnahenqpdnapAgL9fnqpenqpinq1en6lgn6denqpenqpfnqpenqpfoKpdnapZmaZenqpenqpVlapfnaldn6lenatenqtdoqJen6pinaddnqtdnapgn6hen6penqpenapcn6len6pVqqpfn6tfn6tenqpen6tfnqpdm6henqpfnatVqqpenqpenalenqpenalenqpfnalenqpenqpenqpenqtfnqpfnqtdnqpcn6teoahfnqpenqpenapdn6ldnqtenqpZm6Zenaldn6lfnqlfnqpenqpfoKxgn6penapen6tenqtcnqtfnqlenqpenapdoq5enqten6pfnatfnatgn6xfoKtgn6pdnaldnqpdm6pen6pen6ldn6tcnqhenqpfnqlenqpgn6hdnqpenqtfnapdnqlenqpenapenapdnqlenqpenqpenqpenqpenqpen6tenqpenaldn6penqpgn6pdn6tenqtgn6pdnaten6pen6lcn6penqoAAAA34kI3AAAAyHRSTlMAR+brVhHw+A+BDu+FEAfW2wl+hEQs+Z8CxewVblwe8r4BsfYjWHYS6NIFnv05QP6Q4g2ITy76qsfxG3JnH/OzKhPp2QiiQpsK3Iwv+7cEzfUidyD00Lr8M2AU6uEMp01JpgveGpFjNcHu0VBaA5eUtm3VKfdbBsCAq33MU+XksIvCYd09JrLteGWO2BeSpHRpzysYjYJMOlngxBZkyUZeKENIaL8hinpSMstx4zjKo6+J31G8g9S7k62WamxBrMYtVZ0wc7RiRbS+1gEAAAABYktHRACIBR1IAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4wEQFiAoiefuOQAABMRJREFUaN69mvlDE0cUxxcRgjfRigHEmnoAEYkVRagiKigqFGnVRolYRDxA410Vrx4e9cJ6X23V2lqvHl6tZ2tV1P2z+t7Ci4QkOyQz874/zc5L8s13k+x+5k0MI04l9DAFSuwZ72vbKSlZ5GuajhQNxr3Evqajt3rflD7dMO6rKXByv6jl/gOgnurUFHhg9PogDPwef+DBaVAfosFXENiVDuWMTP7AQ/FEZ/EHHvY+lIe7+QN/AOURI/kDj8ITPVqDryBwdg6Ucz38gcdANW8sf+B8L5TH6fC1D+xMheqH4/kDF+A3awJ/4ImFUJ2kw9c+sKsIqsUf8QeejCd6Cn/gkqlQLXLxBy6FYto0/sBZeKJ7afG1DTx9BhTLyvkDz4SidxZ/4Fl4razQ4msbePYcKOYk8Qeei9+sUfyBK6ug+LEeX7vA1fOgVvMJf+BP8URP5g88fwHUFurAHUHgz6DmW8QfeDGe6Ll6fO0C1/qhtqSOP/BSDPw5f+B69F2mydcmcMNyfE+N/IFXYOCV/IFX+aC0WsfSkAI3RewdeZrtui8z1sj5Wj2tyIHX2vd9/HLkFz2wyLi4WlNgI7DOYWc8SDqwTQMgstaj74aAjK+opxVRG9F3k1wvM57ACQgkiXJgEE/gzficLZJtgTgCT8fVufcLOd84Am/dhh/wdjnfOAK7cUlhtkheReMIvAN9d85mD7wrD56yW7YrEHvgRTXwjKmVkr6xB27cg/016bZPzIHrFqoh+1gDu75E3zHSvjEH/gp9v97KHvgb9N1byx54H26BNO2X9o2+mVZ1IFKq/d9CqVBBE6TaZjPtYPjDs8uwcEje1wjYGA8Ne7RnOM4fVuBrGPlHovmmHQ17cAXOl0qhjkCtYHAsbPY7BahjrzpEzjC2qPfJo45Ax8HhRNfJk8UKUEegXDN8iXZqiQLUESgfLPo0hM45i1SgjkAtYHE6dMq9TAXqCNRYCOe0y0XxjBLUEQhNujQOe3pVoI5Ant1gcjZk6twWJagj0HkwuRBydZqfowR1RLpodtmgHZ+rBnUEqgQTx/edJgKlalBHJLwRhPzXoVUR6gjUD3u0qzpN/KAIdUTCDbwfOx1fqlKEOgK5ETEuvzu+gqBQ+JN2X+Mq3vne7WdZi2DzZ/2+1s5hQfDI84sZftnWohK41+ddCx5WyHd1uqlfwehA8Oi6dtQhOTPAKYGObuRpRx0SLk/mUGfy5gL9qEO6BVa3O8aNv+lHHdLvYDUiu33s/IMBdUh/msE9WtcdBtQhZeLtvmNH6y4H6pDw13OxfWjtbulGHVLgHpidt4b7HByoQ7oPZv7+OLrmZ0Ed0gNw+wsHvf9mQR3SZiBYXwkMqh/yoA7pEbg9xsETHtQhWStT7G3cZkId0lOwGwDXi6s+HtQJCtn5mWFMS2ZCHdI/+MNNMWr3cqEO6V/we2KUP+dCHRKuTM3/3MfYUIeEK9NtxnY21CFZK9MXL7xsqEPC7dIeY2v4UIeEfw5/mcOHOqRX+NkmMqIOqYLal0yoQ7JWppyoQ2rr8OVCHZK1MuVEHVJ9uy8f6pBetxuzoQ4JV6asqEOy9q8YUYdkrUw5UYf0xmRGHVK6og2smNWsaAMrZr1N9rfpe/X/ATce57w5SsC7AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTAxLTE2VDIxOjMyOjQwKzAxOjAwSt79ewAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wMS0xNlQyMTozMjo0MCswMTowMDuDRccAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
+						<h3>Rápido</h3>
+						<div class="text">
+							Realize em minutos cálculos dos tributos
+						</div>
+					</v-flex>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src='@/assets/img/security.svg' />
+						<h3>Confiável</h3>
+						<div class="text">
+							Simule cenários e obtenha resultados próximos da realidade
+						</div>
+					</v-flex>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAADAFBMVEUAAABen6penqpdnqqAgIBen6lenqpfnalmmZlenalenqpVqqoA//9enqpen6pmmapenqtfnqpenqpenqpZmaZtkrZenqpenqtenqtenqpenqpbm61Vlapfnqlgn6tenqpenqpgn6xapaVenqpenqpfnqtdnaxenqpfnqpcnahgn6penqpenqpfnalbnqpenqpenqpcnqtdm6penqpenqpfnatenqpen6lenqpenqphnqpAgL9enqtenqpfnqpenqpbpKRenapenqpgn59en6penqpVqqpenatenqldnalen6pjnKpVqqpenqtdnqtdn6tenqpdoq5mmbNenqpfnKpenqpenqphnqdenqpdnatfnKlenqpeoahdnapfoKpenqpgn6pcma1enqpenqpdn6tdm6henqpfoKldnqpcn6pgn6denqpenqpdnqlfoKxenqpgn6henapdn6tgn6henqpenqpem6xenqpdnapcn6ten6penapeoqpenqpfnqpdnqpfnqlenqlfn6penqpgn69dn6lenqpenqpenqpen6pfn6lenalinaden6ldnqpen6pdnqtenqpfnapenqpdnqlfnatfnqlen6penqpenqpenqpeoapdnqtdnapenapfnqldnqpen6tenqpfnqpfnapdn6penqpenqpfn6tenqpdnKhenapen6penapcnapfn6penqtZm6Zdnalenqtdn6lgn6xeoa5enalfnqpenqpenqpenqlenaldnqldn6lenqpanK1dnqpinq1enqpenapenqpdnqpinbFfoKhenapenqtenqpenapfn6tcn6lenKpen6penqlenqpfnqpen6tdn6pgn6pen6tenapdn6ldnqlenKxenqten6penqpfoKtenqtfnqtenqpenqpenapenqlfnqpfnqpenatenqlfnqldnqpfnqpfnatdoqJenqtgn6penqpfnqtdnatfnalenqpen6tdnqxfnqpcnKpdnqlenalcnqhenatenqoAAABPjQExAAAA/nRSTlMAWrt7Anf+pwWAtQkBkMEPprL7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">
+						<h3>Economize</h3>
+						<div class="text">
+							Aumente seu lucro com um enquadramento tributário correto
+						</div>
+					</v-flex>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAxlBMVEUAAABfnKpenqpenqpenatenqpgn6pfoKhfnaldnqlenapenqtinaddn6lenalenqpenqpenqpenqoA//9fnqpenqpenqpen6penqpcnKpanK1enqpenqpenapdnqtfnatfoKyAgIBenqpenqpfnqpen6ldnalen6pem6xenqpmmbNenqpenqpenqtgn6penaphnqdenqpdn6tenqpinbFfnqpdnaxenqpenqpen6pVqqpenqpcn6lVlapenqpen6tenqoAAABjVYlKAAAAQHRSTlMAS+TjSeJII1aJvKMaTYCz6+fvAWblvYpXJB+78cSRXisC8vXCd2vmLscK+eBnGKId7VL7Dc003/BvA9NQDLBqYB/fYgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfjARAWHTj+uLbjAAACAUlEQVRo3u3b6VLCMBAA4JZDDjmUggooiPeBivctff+ncmjBKbVhk82mBN39GcJ+s3R3SofgONLhZnwgsjn5bAqRhVzfzxuBYdf3/x6s8zrDdsDQrEIwesahWcXDwIzrjIvWqC0Vxrym+16G7YGxDbSasM4XAS04B8r5NSOwchSKpfJ6ynClWqtvTJJtpgf/mGFU0oAnn20jdt2rxmGv2YqZja3tnbZnGu50o+buXq+/P1DIi4W95oHINApPyz0sl4oFD5UXBc/KPWrj82LgWbnHA/EeA7BEuUZgmXINwHLl0sOS5VLDonLnn0bCJwhKWFhu7Lad14EHJ6eCe3+3k5gjGhrw2bmATby6ZPBF7VLgJjdzNIcO7A4FbOvKA3Pg4eubUKmPHNmggL3+bcBm7qRZEnjaVPe9B9F+aGZR8KypHp/E+6GZxcDuc5Dr5fUN2L9odNRhyaYih733IM/QdRyp/SJEveKPoKk+AdcA7HwtbCqD8GgM3mTNwL8DM7MkMGZmSWDM6Kw+rIowbC9MNbPKMNXMKsNUo7NasKk1hhlmmGGGGWaYYYb/MxwNijW74aRHGJ01aXj+PED427/OmjRMHQzbB/sKAe1n2E6YOhi2D1ZpLtnmY9gueGnNxXBqsGzDpN7VDJPB1MGwXbCpsBOWOCePjcV/woHPyaPd2Pn6b+rfbfdRSQNhAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTAxLTE2VDIxOjI5OjU2KzAxOjAw3Mrs6AAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wMS0xNlQyMToyOTo1NiswMTowMK2XVFQAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
+						<h3>Relatórios</h3>
+						<div class="text">
+							Verifique os tributos a pagar no Simples, Presumido e Real
+						</div>
+					</v-flex>
+					<v-flex xs6 sm4 md6 lg4 class="text-xs-center item">
+						<img class="icon" src='@/assets/img/info.svg' />
+						<h3>Informações</h3>
+						<div class="text">
+							Confira as aliquotas, base de cálculo, créditos e demais parâmetros utilizados
+						</div>
+					</v-flex>
+				</v-layout>
+			</div>
+		</v-layout>
+	</v-content>
+</template>
+
+<script>
+	export default {}
+</script>
+
+<script src="./Home.js"></script>
+<style lang="scss">
+	@import "./Home.scss";
+</style>
