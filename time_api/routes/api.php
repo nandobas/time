@@ -12,7 +12,18 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//prefix para group
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+/*
+Route::middleware(['checkAcesso:admin;acessos'])->group(function () {    
+    Route::prefix('acesso')->group(function(){        
+        Route::post('salvar', ['uses' => 'AcessoController@salvar']);        
+        Route::get('obter/{id}', ['uses' => 'AcessoController@obter']);   
+    });
+});
+*/
+
+Route::middleware('api')->get('/user', function (Request $request) {
+    return "teste aqui";//$request->user();
 });
