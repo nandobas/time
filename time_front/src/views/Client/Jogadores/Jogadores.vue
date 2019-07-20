@@ -8,7 +8,7 @@
 	export default {}
 </script>
 
-<script src="./Home.js"></script>
+<script src="./Jogadores.js"></script>
 <style lang="scss">
-	@import "./Home.scss";
+	@import "./Jogadores.scss";
 </style>

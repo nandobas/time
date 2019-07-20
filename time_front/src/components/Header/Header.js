@@ -10,7 +10,25 @@ export default {
 
     },
     data() {
-        return {}
+        return {
+        }
     },
-    mounted() {}
+    mounted() {
+    },
+	methods: {
+
+		abreFormClubes(){
+			this.$router.push({
+				name: 'clubes'
+			});
+		},
+		abreFormJogadores(){
+			this.$router.push({
+				name: 'jogadores'
+			});
+		},
+		downloadFile(){
+			alert('...download');
+		},
+	}
 }

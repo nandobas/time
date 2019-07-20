@@ -12,17 +12,16 @@
 		data() {
 			return {
 				//
-				isSetToken: false,
 			}
 		},
 		watch: {},
 		mounted: function() {
-			Object.noty = this.$noty;
+			/*Object.noty = this.$noty;
 			this.$root.$api = new Api();
 
 			this.$router.push({
 				name: 'home'
-			});
+			});*/
 		},
 	}
 </script>

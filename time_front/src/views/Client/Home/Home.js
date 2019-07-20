@@ -1,11 +1,14 @@
 import Api from "@/services/api.js"
+import Header from '../../../components/Header/Header.vue';
 
 export default {
 	name: "Home",
-	components: {},
+	components: {
+		Header
+	},
 	data() {
 		return {
-			blSalvandoTime: false
+			strTitulo:'Projeto para avaliação VHSYS'
 		}
 	},
 	mounted() {
@@ -13,23 +16,5 @@ export default {
 
 	},
 	methods: {
-
-		salvarTime() {
-
-			this.blSalvandoTime = true;
-			this.$root.$api.post('salvarTime', this.form).then(
-
-				(response) => {
-					this.form.id = response.retorno.id;
-
-					localStorage.setItem('_simulacao', JSON.stringify(this.form));
-
-					setTimeout(() => {
-						this.blSalvandoTime = false;
-					}, 1000);
-				}
-			);
-		}
-
 	}
 }

@@ -10,5 +10,13 @@ export default new Router({
 		path: '/',
 		name: 'home',
 		component: () => import('./views/Client/Home/Home.vue')
+	},{
+		path: '/clubes/',
+		name: 'clubes',
+		component: () => import('./views/Client/Clubes/Clubes.vue')
+	},{
+		path: '/jogadores/',
+		name: 'jogadores',
+		component: () => import('./views/Client/Jogadores/Jogadores.vue')
 	}]
 })

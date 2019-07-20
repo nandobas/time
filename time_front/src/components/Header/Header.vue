@@ -1,16 +1,22 @@
 <template>
-	<v-toolbar class="menu">
-		<v-toolbar-items>
-			<v-layout row wrap>
-				<v-flex xs12>
-					<h3>Projeto</h3>
-				</v-flex>
-				<v-flex xs12>
-					<h1>{{ titulo }}</h1>
-				</v-flex>
-			</v-layout>
-		</v-toolbar-items>
-	</v-toolbar>
+	<v-layout row wrap>
+		<div class="flex sm12 md6 bloco">
+
+			<p>Bem vindo</p>
+
+			<h1>Projeto - Time de Futebol</h1>
+
+			<div class="text">
+				<span>{{titulo}}</span> 
+			</div>
+
+		</div>
+		<div class="button-area">
+			<v-btn @click="abreFormClubes();">Clubes</v-btn>
+			<v-btn @click="abreFormJogadores();">Jogadores</v-btn>
+			<v-btn @click="downloadFile();">Download</v-btn>
+		</div>
+	</v-layout>
 
 </template>
 <script src="./Header.js"></script>

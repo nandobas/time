@@ -27,12 +27,8 @@ export default class Api {
 			);
 	}
 
-	get(url) {
-		return axios.get(process.env.VUE_APP_ROOT_API + url, {
-			headers: {
-				'Api-Token': this.token
-			}
-		}).then(
+	get(url) {console.log('env', process.env.VUE_APP_ROOT_API);
+		return axios.get(process.env.VUE_APP_ROOT_API + url).then(
 			((response) => {
 				return response.data;
 			})
