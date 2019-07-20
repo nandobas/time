@@ -27,3 +27,12 @@ Route::middleware(['checkAcesso:admin;acessos'])->group(function () {
 Route::middleware('api')->get('/user', function (Request $request) {
     return "teste aqui";//$request->user();
 });
+
+//Clubes
+Route::middleware('api')->get('/clubes', 'ClubeController@ListarClubes');
+Route::middleware('api')->get('/clubes/{intCod}', 'ClubeController@GetClube');
+Route::middleware('api')->post('/salvar_clube/', 'ClubeController@SalvarClube');
+
+/*
+Route::put('articles/{id}', 'ArticleController@update');
+Route::delete('articles/{id}', 'ArticleController@delete');*/
