@@ -14,15 +14,14 @@ class ClubeController extends Controller
 
     public function SalvarClube(Request $obRequest){
         $dados = $obRequest->all();
-
-        $retorno = $this->service->SalvarClube($dados);
-        return response()->json($retorno);
+        $retorno = $this->service->SalvarClube($dados["data"]);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function GetClube(Request $obRequest){
         $intCod = $obRequest['intCod'];
         $retorno = $this->service->GetClube($intCod);
-        return $this->responseJson($retorno);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function ListarClubes(Request $obRequest){
@@ -32,9 +31,9 @@ class ClubeController extends Controller
 
     public function RemoverClube(Request $obRequest){
         $dados = $obRequest->all();
-        $retorno = $this->service->RemoverClube($dados["int_cod"]);
+        $retorno = $this->service->RemoverClube($dados["data"]["int_cod"]);
         
-        return $this->responseJson($retorno);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
 }

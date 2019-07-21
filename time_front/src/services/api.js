@@ -5,16 +5,24 @@ export default class Api {
 
 	}
 
-	token = localStorage.getItem('token');
+	token = 'x123456a54565s';//localStorage.getItem('token');
+
+	
+	createFormData(formData, key, data) {
+		if (data === Object(data) || Array.isArray(data)) {
+			for (var i in data) {
+				this.createFormData(formData, key + '[' + i + ']', data[i]);
+			}
+		} else {
+			formData.append(key, data);
+		}
+	}
 
 	post(url, dados) {
-		return axios.post(process.env.VUE_APP_ROOT_API + url, {
-				...dados
-			}, {
-				headers: {
-					'Api-Token': this.token
-				}
-			}).then(
+		let header = {'Content-Type': 'application/x-www-form-urlencoded'}
+		return axios.post(process.env.VUE_APP_ROOT_API + url, 
+			dados, header
+			).then(
 				((response) => {
 					return response.data
 				})
@@ -27,7 +35,7 @@ export default class Api {
 			);
 	}
 
-	get(url) {console.log('env', process.env.VUE_APP_ROOT_API);
+	get(url) {
 		return axios.get(process.env.VUE_APP_ROOT_API + url).then(
 			((response) => {
 				return response.data;

@@ -22,12 +22,12 @@ class ClubeRepository
     }
 
     public function SalvarClube($obRequest){
-
+        
         $obClube = Array(
-            'str_nome'=>$obRequest["strNome"],
-            'str_escudo'=>$obRequest["strEscudo"],
-            'str_mascote'=>$obRequest["strMascote"],
-            'str_categoria'=>$obRequest["strCategoria"],
+            'str_nome'=>$obRequest["str_nome"],
+            'str_escudo'=>$obRequest["str_escudo"],
+            'str_mascote'=>$obRequest["str_mascote"],
+            'str_categoria'=>$obRequest["str_categoria"],
         );
 
         $clube = new Clube;
@@ -47,7 +47,7 @@ class ClubeRepository
         return $clube;
     }
 
-    public function RemoverJClube(int $int_cod){
+    public function RemoverClube(int $int_cod){
 
         $clube = Clube::findOrFail($int_cod);
         $clube->delete();

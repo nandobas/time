@@ -11,6 +11,9 @@
 					<v-text-field autofocus single-line v-model="strFiltro" label="Pesquisar Clube" clearable append-icon="mdi-magnify" class='pt-0' outline solo>
 					</v-text-field>
 				</v-flex>
+				<v-flex xs12 md5>
+					<v-btn @click="novoClube();">Novo</v-btn>
+				</v-flex>
 			</v-layout>
 			<v-data-table :items="filtered" hide-actions :pagination.sync="pagination">
 				<template v-slot:headers="props" v-if='arClubes.length > 0'>
@@ -83,7 +86,82 @@
 		</div>
 
 		</div>
+
+
+
+	<v-dialog v-model="dialogFormCLube" persistent max-width="600px">
+	 <form @submit="salvarClube()">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Clube</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12 sm6 md4>
+                <v-text-field label="Nome*" 
+				required
+				name="str_nome" 
+				v-model="clube.str_nome"
+				></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-autocomplete
+                  :items="arCategorias"
+				  name="str_categoria"
+                  label="Categoria"
+				  v-model="clube.str_categoria"
+                ></v-autocomplete>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*campos obrigatórios</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click="dialogFormCLube = false">Fechar</v-btn>
+          <v-btn color="blue darken-1" flat @click="salvarClube()">
+			  <span v-if="blSalvandoClube">
+				  <v-layout row justify-center align-center>
+					<v-progress-circular indeterminate :size="20" :width="2" color="grey"></v-progress-circular>
+				  </v-layout>
+			  </span>
+			  <span v-else>
+			 	Salvar
+			  </span>
+
+		  </v-btn>
+        </v-card-actions>
+      </v-card>
+	 </form>
+    </v-dialog>
+
+	<v-dialog v-model="dialogRemover" persistent max-width="290">
+      <v-card>
+        <v-card-title class="headline alert">Confirma a exclusão?</v-card-title>
+        <v-card-text>{{clube.str_nome}}</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="red darken-1" text @click="dialogRemover = false">Cancelar</v-btn>
+          <v-btn color="green darken-1" text @click="confirmaExclusao()">
+			  
+			  <span v-if="blSalvandoClube">
+				  <v-layout row justify-center align-center>
+					<v-progress-circular indeterminate :size="20" :width="2" color="grey"></v-progress-circular>
+				  </v-layout>
+			  </span>
+			  <span v-else>
+			 	Excluir
+			  </span>
+		  </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-layout>
+
 	</v-content>
+
+
 		
 </template>
 

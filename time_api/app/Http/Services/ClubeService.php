@@ -41,4 +41,14 @@ class ClubeService
        
        return $retorno; 
     }
+
+    public function RemoverClube($int_cod)
+    {
+        $retorno = [];
+        $retorno['retorno'] = $this->repository->RemoverClube($int_cod);
+        $retorno['status']=true; 
+        $retorno['codeHTTP']=200;
+       
+       return $retorno; 
+    }
 }

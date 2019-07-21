@@ -9,7 +9,10 @@ export default {
 	data() {
 		return {
 			strTitulo: 'Clubes',
-			blSalvandoClube: false,			
+			blSalvandoClube: false,	
+			dialogFormCLube: false,
+			dialogRemover: false,
+	  
 			maxPaginas: 5,
 			pagination: {
 				page: 1,
@@ -17,12 +20,19 @@ export default {
 				sortBy: 'updated_at',
 				descending: true,
 			},
-			dialogRemover: false,
 			timeoutPesquisa: true,
+			form:{},
 			clube: {
 				int_cod: 0,
-				str_nome: ''
+				str_nome: '',
+				str_escudo:'',
+				str_mascote:'',
+				str_categoria:''
 			},
+			arCategorias:[
+				'Sub-7','Sub-8','Sub-9','Sub-11','Sub-13','Sub-15','Sub-17',
+				'Sub-20','Adulto','Veterano'
+			],
 			strFiltro: '',
 			arClubes: [],
 		}
@@ -65,14 +75,25 @@ export default {
 		},
 	},
 	methods: {
-		selecionaClube(clube) {
-			let objClube = JSON.parse(clube);
-			objClube.int_cod = clube.id;
-		},
-		abrirDialogExcluir(clube) {
+		novoClube(){
 			this.clube = {
-				int_cod: clube.int_cod,
-				str_nome: clube.str_nome
+				int_cod: 0,
+				str_nome: '',
+				str_escudo:'',
+				str_mascote:'',
+				str_categoria:''
+			};
+
+			this.dialogFormCLube = true;
+		},
+		selecionaClube(p_clube) {
+			this.dialogFormCLube = true;
+			this.clube = p_clube;
+		},
+		abrirDialogExcluir(p_clube) {
+			this.clube = {
+				int_cod: p_clube.int_cod,
+				str_nome: p_clube.str_nome
 			};
 			this.dialogRemover = true;
 		},
@@ -97,16 +118,43 @@ export default {
 				}
 			)
 		},
+		confirmaExclusao(){
+
+			this.blSalvandoClube = true;
+
+			var fClube = new FormData();
+			this.$root.$api.createFormData(fClube, 'data', this.clube);
+			
+			this.$root.$api.post('remover_clube', 
+			fClube
+				).then(
+
+				(response) => {
+					setTimeout(() => {
+						this.blSalvandoClube = false;
+						this.dialogRemover = false;
+						this.obterClubes();
+					}, 1000);
+				}
+			);
+		},
 		salvarClube() {
 
 			this.blSalvandoClube = true;
-			this.$root.$api.post('salvar_clube', this.form).then(
+
+			var fClube = new FormData();
+			this.$root.$api.createFormData(fClube, 'data', this.clube);
+			
+			this.$root.$api.post('salvar_clube', 
+			fClube
+				).then(
 
 				(response) => {
-					this.form.int_cod = response.retorno.int_cod;
+					this.clube.int_cod = response.retorno.int_cod;
 
 					setTimeout(() => {
 						this.blSalvandoClube = false;
+						this.obterClubes();
 					}, 1000);
 				}
 			);
