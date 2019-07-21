@@ -35,7 +35,7 @@
 				</template>
 				<template v-slot:items="props">
 					<td>
-						{{ props.item.strNome }}
+						{{ props.item.str_nome }}
 					</td>
 					<td class="acao text-xs-center">{{ props.item.updated_at }}</td>
 					<td class='acao text-xs-center'>

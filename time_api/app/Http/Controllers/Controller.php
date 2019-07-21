@@ -11,7 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function responseJson($myArray){
-        return response()->json($myArray);
+    function responseJson($retorno){
+        return response(json_encode($retorno),200, ['Content-Type' => 'application/json'])->toJson();
     }
 }

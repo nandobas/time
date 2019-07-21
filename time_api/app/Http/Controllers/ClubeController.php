@@ -22,18 +22,19 @@ class ClubeController extends Controller
     public function GetClube(Request $obRequest){
         $intCod = $obRequest['intCod'];
         $retorno = $this->service->GetClube($intCod);
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        return $this->responseJson($retorno);
     }
 
     public function ListarClubes(Request $obRequest){
         $retorno = $this->service->ListarClubes();
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function RemoverClube(Request $obRequest){
         $dados = $obRequest->all();
         $retorno = $this->service->RemoverClube($dados["int_cod"]);
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        
+        return $this->responseJson($retorno);
     }
 
 }

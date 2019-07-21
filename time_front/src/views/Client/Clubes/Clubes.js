@@ -20,8 +20,8 @@ export default {
 			dialogRemover: false,
 			timeoutPesquisa: true,
 			clube: {
-				id: 0,
-				strNome: ''
+				int_cod: 0,
+				str_nome: ''
 			},
 			strFiltro: '',
 			arClubes: [],
@@ -38,7 +38,7 @@ export default {
 				tmpClubes = this.arClubes;
 			} else {
 				tmpClubes = this.arClubes.filter(e => {
-					if (e.strNome.toLowerCase().indexOf(this.strFiltro.toLowerCase()) > -1) {
+					if (e.str_nome.toLowerCase().indexOf(this.strFiltro.toLowerCase()) > -1) {
 						return true;
 					}
 				});
@@ -67,12 +67,12 @@ export default {
 	methods: {
 		selecionaClube(clube) {
 			let objClube = JSON.parse(clube);
-			objClube.id = clube.id;
+			objClube.int_cod = clube.id;
 		},
 		abrirDialogExcluir(clube) {
 			this.clube = {
-				id: clube.id,
-				strNome: clube.strNome
+				int_cod: clube.int_cod,
+				str_nome: clube.str_nome
 			};
 			this.dialogRemover = true;
 		},
@@ -87,7 +87,7 @@ export default {
 				(response) => {
 					this.timeoutPesquisa = false;
 					if (response && response.status) {
-						this.arClubes = response.response;
+						this.arClubes = response.retorno;
 					} else {
 						this.arClubes = [];
 					}
@@ -103,7 +103,7 @@ export default {
 			this.$root.$api.post('salvar_clube', this.form).then(
 
 				(response) => {
-					this.form.id = response.retorno.id;
+					this.form.int_cod = response.retorno.int_cod;
 
 					setTimeout(() => {
 						this.blSalvandoClube = false;
