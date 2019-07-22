@@ -98,14 +98,14 @@
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
+              <v-flex xs12 sm6 md6>
                 <v-text-field label="Nome*" 
 				required
 				name="str_nome" 
 				v-model="jogador.str_nome"
 				></v-text-field>
               </v-flex>
-              <v-flex xs12 sm6>
+              <v-flex xs12 sm6 md6>
                 <v-autocomplete
                   :items="arPosicoes"
 				  name="str_posicao"
@@ -113,51 +113,28 @@
 				  v-model="jogador.str_posicao"
                 ></v-autocomplete>
               </v-flex>
-			  <v-flex xs12 lg6>
-				<v-menu
-					ref="menu1"
-					v-model="menu1"
-					:close-on-content-click="false"
-					:nudge-right="40"
-					lazy
-					transition="scale-transition"
-					offset-y
-					full-width
-					max-width="290px"
-					min-width="290px"
-				>
-					<template v-slot:activator="{ on }">
-						<v-text-field
-							v-model="dateFormatted"
-							label="Date"
-							hint="DD/MM/YYYY formato"
-							persistent-hint
-							prepend-icon="event"
-							@blur="jogador.dt_data_nascimento = parseDate(dateFormatted)"
-							v-on="on"
-						></v-text-field>
-					</template>
-					<v-date-picker v-model="jogador.dt_data_nascimento" no-title @input="menu1 = false"></v-date-picker>
-				</v-menu>
-			</v-flex>
+			  <v-flex xs12>
+				<v-subheader class="pl-0">Idade</v-subheader>
+				<v-slider
+				v-model="jogador.int_idade"
+				:thumb-size="24"
+				thumb-label="always"
+				></v-slider>
+			  </v-flex>
 
-			<v-flex xs12 sm6 md4>
+			<v-flex xs12>
 				<v-text-field label="País"
 					name="str_pais" 
 					v-model="jogador.str_pais"
 				></v-text-field>
 			</v-flex>
 
-			<v-flex xs12 sm6>
+			<v-flex xs12>
 
 			<v-card-text>
-				{{jogador.int_cod_clube}}
 			<v-autocomplete
                 v-model="jogador.int_cod_clube"
-                :disabled="isUpdating"
                 :items="arClubes"
-                box
-                chips
                 color="blue-grey lighten-2"
                 label="Select"
                 item-text="name"

@@ -40,7 +40,7 @@ class JogadorRepository
         $obJogador = Array(
             'int_cod_clube'=>$obRequest["int_cod_clube"],
             'str_nome'=>$obRequest["str_nome"],
-            'dt_data_nascimento'=>$obRequest["dt_data_nascimento"],
+            'int_idade'=>$obRequest["int_idade"],
             'str_posicao'=>$obRequest["str_posicao"],
             'str_pais'=>$obRequest["str_pais"],
         );

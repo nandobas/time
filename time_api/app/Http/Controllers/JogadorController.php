@@ -14,6 +14,8 @@ class JogadorController extends Controller
 
     public function SalvarJogador(Request $obRequest){
         $dados = $obRequest->all();
+
+        $dados["data"]["int_cod_clube"] = $dados["data"]["int_cod_clube"]["key"];
         $retorno = $this->service->SalvarJogador($dados["data"]);
         return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }

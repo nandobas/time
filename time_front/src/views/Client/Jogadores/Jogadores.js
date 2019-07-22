@@ -8,9 +8,6 @@ export default {
 	},
 	data() {
 		return {
-			date: new Date().toISOString().substr(0, 10),
-      		dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10)),
-	  		menu1: false,
 	  
 			strTitulo: 'Jogadores',
 			blSalvandoJogador: false,	
@@ -29,7 +26,7 @@ export default {
 				int_cod: 0,
 				int_cod_clube: 0,
 				str_nome: '',
-				dt_data_nascimento:'',
+				int_idade:7,
 				str_posicao:'',
 				str_pais:'',
 			},
@@ -60,10 +57,6 @@ export default {
 		this.obterJogadores();
 	},
 	computed: {
-		
-		computedDateFormatted () {
-			return this.formatDate(this.date)
-		  },
 
 		filtered: function() {
 			let tmpJogadores = [];
@@ -98,31 +91,15 @@ export default {
 			return arSort;
 		},
 	},
-	watch: {
-		date (val) {
-		  this.dateFormatted = this.formatDate(this.date)
-		}
-	},
 	methods: {
-		formatDate (date) {
-		  if (!date) return null
-  
-		  const [year, month, day] = date.split('-')
-		  return `${day}/${month}/${year}`
-		},
-		parseDate (date) {
-		  if (!date) return null
-  
-		  const [day, month, year] = date.split('/')
-		  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-		},
 		novoJogador(){
 			this.jogador = {
 				int_cod: 0,
+				int_cod_clube: 0,
 				str_nome: '',
-				str_escudo:'',
-				str_mascote:'',
-				str_categoria:''
+				int_idade:7,
+				str_posicao:'',
+				str_pais:''
 			};
 
 			this.dialogFormJogador = true;
@@ -130,6 +107,15 @@ export default {
 		selecionaJogador(p_jogador) {
 			this.dialogFormJogador = true;
 			this.jogador = p_jogador;
+
+			let int_cod_clube = this.jogador.int_cod_clube;
+			
+			let objSelectedClube = [];
+			this.arClubes.forEach(function(value, key) {
+				if(int_cod_clube == key)
+				objSelectedClube = value;
+			});
+			this.jogador.int_cod_clube = objSelectedClube;
 		},
 		abrirDialogExcluir(p_jogador) {
 			this.jogador = {
@@ -185,7 +171,7 @@ export default {
 
 			var fJogador = new FormData();
 			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
-			
+
 			this.$root.$api.post('salvar_jogador', 
 			fJogador
 				).then(

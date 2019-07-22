@@ -21,7 +21,7 @@ class Jogadores extends Migration
             $table->increments('int_cod');
             $table->foreign('int_cod_clube')->references('int_cod')->on('clubes');
             $table->string('str_nome', 50);
-            $table->date('dt_data_nascimento');
+            $table->int('int_idade');
             $table->string('str_posicao', 20);
             $table->string('str_pais', 15);
             $table->timestamps();
