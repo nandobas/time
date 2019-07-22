@@ -30,6 +30,13 @@ Route::middleware('api')->get('/user', function (Request $request) {
 
 //Clubes
 Route::middleware('api')->get('/clubes', 'ClubeController@ListarClubes');
-Route::middleware('api')->get('/clubes/{intCod}', 'ClubeController@GetClube');
+Route::middleware('api')->get('/clubes/{int_cod}', 'ClubeController@GetClube');
 Route::middleware('api')->post('/salvar_clube/', 'ClubeController@SalvarClube');
 Route::middleware('api')->post('/remover_clube/', 'ClubeController@RemoverClube');
+
+//Jogadores
+Route::middleware('api')->get('/jogadores', 'JogadorController@ListarJogadores');
+Route::middleware('api')->get('/jogadores_time/{int_cod_time}', 'JogadorController@ListarJogadoresTime');
+Route::middleware('api')->get('/jogadores/{int_cod}', 'JogadorController@GetJogador');
+Route::middleware('api')->post('/salvar_jogador/', 'JogadorController@SalvarJogador');
+Route::middleware('api')->post('/remover_jogador/', 'JogadorController@RemoverJogador');

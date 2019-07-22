@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Simulacao extends Model {
+class Jogador extends Model {
 
     use SoftDeletes;
 
@@ -15,7 +15,7 @@ class Simulacao extends Model {
     protected $primaryKey = 'int_cod';
     protected $dates = ['deleted_at'];
     
-    protected $fillable = ['int_cod_clube', 'str_nome', 'dt_data_nascimento', 'str_posicao', 'str_pais'];
+    protected $fillable = ['int_cod', 'int_cod_clube', 'str_nome', 'dt_data_nascimento', 'str_posicao', 'str_pais'];
 
     public function getCreatedAtAttribute($value){
         return \Carbon\Carbon::parse($value)->format('d/m/Y H:i:s');

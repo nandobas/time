@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Services\JogadorService;
+use App\Http\Services\JogadorService;
 
 class JogadorController extends Controller
 {
@@ -14,26 +14,24 @@ class JogadorController extends Controller
 
     public function SalvarJogador(Request $obRequest){
         $dados = $obRequest->all();
-        //$dados['id_usuario'] = $obRequest->decrypt['id'];
-
-        $retorno = $this->service->SalvarJogador($dados);
-        return response()->json($retorno);
+        $retorno = $this->service->SalvarJogador($dados["data"]);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function ListarJogadoresTime(Request $obRequest){
-        $retorno = $this->service->ListarJogadoresTime();
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        $retorno = $this->service->getJogadoresTime($dados["int_cod_clube"]);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function ListarJogadores(Request $obRequest){
         $retorno = $this->service->ListarJogadores();
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
     public function RemoverJogador(Request $obRequest){
         $dados = $obRequest->all();
-        $retorno = $this->service->RemoverJogador($dados["int_cod"]);
-        return $this->responseJson($retorno['retorno'], $retorno['status'], $retorno['codeHTTP']);
+        $retorno = $this->service->RemoverJogador($dados["data"]["int_cod"]);        
+        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
 }

@@ -8,8 +8,15 @@ export default {
 	},
 	data() {
 		return {
+			date: new Date().toISOString().substr(0, 10),
+      		dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10)),
+	  		menu1: false,
+	  
 			strTitulo: 'Jogadores',
-			blSalvandoJogador: false,			
+			blSalvandoJogador: false,	
+			dialogFormJogador: false,
+			dialogRemover: false,
+	  
 			maxPaginas: 5,
 			pagination: {
 				page: 1,
@@ -17,20 +24,47 @@ export default {
 				sortBy: 'updated_at',
 				descending: true,
 			},
-			dialogRemover: false,
 			timeoutPesquisa: true,
-			jogador: {
-				id: 0,
-				strNome: ''
+			jogador:{	
+				int_cod: 0,
+				int_cod_clube: 0,
+				str_nome: '',
+				dt_data_nascimento:'',
+				str_posicao:'',
+				str_pais:'',
 			},
+			arClubes:[{'key':1, 'name':'Parana'},{'key':2, 'name':'Sao Paulo'},{'key':3, 'name':'Santa Catarina'}],
+			arPosicoes:[
+			'Goleiro',
+			'Zagueiro',
+			'Lateral direito',
+			'Lateral esquerdo',
+			'Líbero',
+			'Volante',
+			'Ala direito',
+			'Ala esquerdo',
+			'Meia-armador',
+			'Médio Centro',
+			'Meio-campo Lateral direito',
+			'Meio-campo Lateral esquerdo',
+			'Meia Ofensivo',
+			'Atacante',
+			'Segundo Atacante',
+			'Centroavante'
+			],
 			strFiltro: '',
 			arJogadores: [],
 		}
 	},
 	mounted() {
-		//this.obterJogadores();
+		this.obterJogadores();
 	},
 	computed: {
+		
+		computedDateFormatted () {
+			return this.formatDate(this.date)
+		  },
+
 		filtered: function() {
 			let tmpJogadores = [];
 
@@ -38,7 +72,7 @@ export default {
 				tmpJogadores = this.arJogadores;
 			} else {
 				tmpJogadores = this.arJogadores.filter(e => {
-					if (e.strNome.toLowerCase().indexOf(this.strFiltro.toLowerCase()) > -1) {
+					if (e.str_nome.toLowerCase().indexOf(this.strFiltro.toLowerCase()) > -1) {
 						return true;
 					}
 				});
@@ -64,15 +98,43 @@ export default {
 			return arSort;
 		},
 	},
+	watch: {
+		date (val) {
+		  this.dateFormatted = this.formatDate(this.date)
+		}
+	},
 	methods: {
-		selecionaJogador(jogador) {
-			let objJogador = JSON.parse(jogador);
-			objSimulacao.id = jogador.id;
+		formatDate (date) {
+		  if (!date) return null
+  
+		  const [year, month, day] = date.split('-')
+		  return `${day}/${month}/${year}`
 		},
-		abrirDialogExcluir(jogador) {
+		parseDate (date) {
+		  if (!date) return null
+  
+		  const [day, month, year] = date.split('/')
+		  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+		},
+		novoJogador(){
 			this.jogador = {
-				id: jogador.id,
-				strNome: jogador.strNome
+				int_cod: 0,
+				str_nome: '',
+				str_escudo:'',
+				str_mascote:'',
+				str_categoria:''
+			};
+
+			this.dialogFormJogador = true;
+		},
+		selecionaJogador(p_jogador) {
+			this.dialogFormJogador = true;
+			this.jogador = p_jogador;
+		},
+		abrirDialogExcluir(p_jogador) {
+			this.jogador = {
+				int_cod: p_jogador.int_cod,
+				str_jogador: p_jogador.str_nome
 			};
 			this.dialogRemover = true;
 		},
@@ -82,12 +144,12 @@ export default {
 		obterJogadores() {
 			this.dialogRemover = false;
 			this.timeoutPesquisa = true;
-
+			this.$root.$api = new Api();
 			this.$root.$api.get('jogadores').then(
 				(response) => {
 					this.timeoutPesquisa = false;
 					if (response && response.status) {
-						this.arJogadores = response.response;
+						this.arJogadores = response.retorno;
 					} else {
 						this.arJogadores = [];
 					}
@@ -97,16 +159,43 @@ export default {
 				}
 			)
 		},
+		confirmaExclusao(){
+
+			this.blSalvandoJogador = true;
+
+			var fJogador = new FormData();
+			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
+			
+			this.$root.$api.post('remover_jogador', 
+			fClube
+				).then(
+
+				(response) => {
+					setTimeout(() => {
+						this.blSalvandoJogador = false;
+						this.dialogRemover = false;
+						this.obterJogadores();
+					}, 1000);
+				}
+			);
+		},
 		salvarJogador() {
 
 			this.blSalvandoJogador = true;
-			this.$root.$api.post('salvar_jogador', this.form).then(
+
+			var fJogador = new FormData();
+			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
+			
+			this.$root.$api.post('salvar_jogador', 
+			fJogador
+				).then(
 
 				(response) => {
-					this.form.id = response.retorno.id;
+					this.jogador.int_cod = response.retorno.int_cod;
 
 					setTimeout(() => {
 						this.blSalvandoJogador = false;
+						this.obterJogador();
 					}, 1000);
 				}
 			);

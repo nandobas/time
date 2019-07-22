@@ -1,17 +1,14 @@
 <?php
 namespace App\Http\Repositories;
 
-use App\Models\Jogador;
+use App\Http\Models\Jogador;
 
 class JogadorRepository
 {
-    public function getJogadoresTime(int $int_cod_clube, string $strNome=""){
+    public function getJogadoresTime(int $int_cod_clube){
         
-        $retorno = Simulacao::
-                      where('int_cod_clube', '=', $int_cod_clube);
-        
-        if($strNome != "")              
-            $retorno = $retorno->whereRaw("str_nome like '%".(trim($strNome))."%' ");           
+        $retorno = Jogador::
+                      where('int_cod_clube', '=', $int_cod_clube);       
         
         $retorno = $retorno->orderBy('updated_at')
                     ->get();
@@ -24,7 +21,7 @@ class JogadorRepository
 
     public function getJogadores(string $strNome=""){
         
-        $retorno = Simulacao;
+        $retorno = new Jogador;
         
         if($strNome != "")              
             $retorno = $retorno->whereRaw("str_nome like '%".(trim($strNome))."%' ");           
@@ -41,11 +38,11 @@ class JogadorRepository
     public function SalvarJogador($obRequest){
 
         $obJogador = Array(
-            'int_cod_clube'=>$obRequest["intCodClube"],
-            'str_nome'=>$obRequest["strNome"],
-            'dt_data_nascimento'=>$obRequest["dtDataNascimento"],
-            'str_posicao'=>$obRequest["strPosicao"],
-            'str_pais'=>$obRequest["strPais"],
+            'int_cod_clube'=>$obRequest["int_cod_clube"],
+            'str_nome'=>$obRequest["str_nome"],
+            'dt_data_nascimento'=>$obRequest["dt_data_nascimento"],
+            'str_posicao'=>$obRequest["str_posicao"],
+            'str_pais'=>$obRequest["str_pais"],
         );
 
         $jogador = new Jogador;
