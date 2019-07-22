@@ -133,11 +133,11 @@
 
 			<v-card-text>
 			<v-autocomplete
-                v-model="jogador.int_cod_clube"
+                v-model="selected_clube"
                 :items="arClubes"
                 color="blue-grey lighten-2"
                 label="Select"
-                item-text="name"
+                item-text="str_nome"
                 return-object
               >
                 <template
@@ -148,9 +148,9 @@
                     :selected="data.selected"
                     close
                     class="chip--select-multi"
-                    @input="data.parent.selectItem(data.item.key)"
+                    @input="data.parent.selectItem(data.item)"
                   >                    
-                    {{ data.item.name }}
+                    {{ data.item.str_nome }}
                   </v-chip>
                 </template>
                 

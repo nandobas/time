@@ -30,7 +30,8 @@ export default {
 				str_posicao:'',
 				str_pais:'',
 			},
-			arClubes:[{'key':1, 'name':'Parana'},{'key':2, 'name':'Sao Paulo'},{'key':3, 'name':'Santa Catarina'}],
+			selected_clube:[],
+			arClubes:[],
 			arPosicoes:[
 			'Goleiro',
 			'Zagueiro',
@@ -55,6 +56,7 @@ export default {
 	},
 	mounted() {
 		this.obterJogadores();
+		this.obterClubes();
 	},
 	computed: {
 
@@ -101,21 +103,23 @@ export default {
 				str_posicao:'',
 				str_pais:''
 			};
-
+			selected_clube = [];
 			this.dialogFormJogador = true;
 		},
 		selecionaJogador(p_jogador) {
 			this.dialogFormJogador = true;
 			this.jogador = p_jogador;
 
-			let int_cod_clube = this.jogador.int_cod_clube;
+			let int_cod_clube = p_jogador.int_cod_clube;
 			
 			let objSelectedClube = [];
 			this.arClubes.forEach(function(value, key) {
-				if(int_cod_clube == key)
+				console.log(int_cod_clube);
+				console.log(value);
+				if(int_cod_clube == value.int_cod)
 				objSelectedClube = value;
 			});
-			this.jogador.int_cod_clube = objSelectedClube;
+			this.selected_clube = objSelectedClube;
 		},
 		abrirDialogExcluir(p_jogador) {
 			this.jogador = {
@@ -168,6 +172,7 @@ export default {
 		salvarJogador() {
 
 			this.blSalvandoJogador = true;
+			this.jogador.int_cod_clube = this.selected_clube.int_cod;
 
 			var fJogador = new FormData();
 			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
@@ -181,10 +186,22 @@ export default {
 
 					setTimeout(() => {
 						this.blSalvandoJogador = false;
-						this.obterJogador();
+						this.obterJogadores();
 					}, 1000);
 				}
 			);
+		},
+		obterClubes() {
+			this.$root.$api = new Api();
+			this.$root.$api.get('clubes').then(
+				(response) => {
+					if (response && response.status) {
+						this.arClubes = response.retorno;
+					} else {
+						this.arClubes = [];
+					}
+				}
+			)
 		}
 
 	}
