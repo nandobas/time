@@ -158,7 +158,7 @@ export default {
 			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
 
 			this.$root.$api.post('remover_jogador',
-				fClube
+				fJogador
 			).then(
 
 				(response) => {

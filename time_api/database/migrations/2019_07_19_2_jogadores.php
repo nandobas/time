@@ -19,7 +19,7 @@ class Jogadores extends Migration
         
         Schema::create('jogadores', function (Blueprint $table) {
             $table->increments('int_cod');
-            $table->foreign('int_cod_clube')->references('int_cod')->on('clubes');
+            $table->int('int_cod_clube');
             $table->string('str_nome', 50);
             $table->int('int_idade');
             $table->string('str_posicao', 20)->nullable();
