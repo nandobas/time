@@ -13,6 +13,7 @@ class JogadorRepository
             'jogadores.int_cod', 'jogadores.str_nome', 'int_idade', 'str_posicao', 'str_pais', 
             'clubes.str_nome as str_nome_clube', 'clubes.str_categoria'
         )
+        ->whereNull('jogadores.deleted_at')
         ->getQuery()
         ->get();
 
