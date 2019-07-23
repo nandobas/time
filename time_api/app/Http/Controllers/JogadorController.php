@@ -18,11 +18,6 @@ class JogadorController extends Controller
         return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }
 
-    public function ListarJogadoresTime(Request $obRequest){
-        $retorno = $this->service->getJogadoresTime($dados["int_cod_clube"]);
-        return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
-    }
-
     public function ListarJogadores(Request $obRequest){
         $retorno = $this->service->ListarJogadores();
         return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);

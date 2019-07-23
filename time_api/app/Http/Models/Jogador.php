@@ -24,4 +24,9 @@ class Jogador extends Model {
     public function getUpdatedAtAttribute($value){
         return \Carbon\Carbon::parse($value)->format('d/m/Y H:i:s');
     }
+
+    public function clube()
+    {    
+        return $this->hasMany('App\Http\Models\Clube', 'int_cod', 'int_cod_clube');
+    }
 }

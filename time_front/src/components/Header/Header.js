@@ -1,3 +1,4 @@
+import axios from 'axios';
 export default {
     name: "Layout",
     props: {
@@ -11,6 +12,7 @@ export default {
     },
     data() {
         return {
+            timeoutDownload:false
         }
     },
     mounted() {
@@ -28,7 +30,28 @@ export default {
 			});
 		},
 		downloadFile(){
-			alert('...download');
+			let there = this;
+            there.timeoutDownload = true;
+
+            axios({
+                url: process.env.VUE_APP_ROOT_API + 'gera_arquivo_csv',
+                method: 'GET',
+                responseType: 'blob', // important
+              }).then((blob) => {
+
+                there.timeoutDownload = false;
+                
+                const url = window.URL.createObjectURL(new Blob([blob.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'file.csv');
+                document.body.appendChild(link);
+                link.click();
+
+            })
+            .catch(function(error) {
+                    console.log(error)
+            });
 		},
 	}
 }

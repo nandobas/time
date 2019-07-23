@@ -6,8 +6,8 @@
 
 	<div>
 		<div class="lista-area mt-2">
-			<v-layout v-if='arClubes.length > 0'>
-				<v-flex xs12 md5>
+			<v-layout >
+				<v-flex xs12 md5 v-if='arClubes.length > 0'>
 					<v-text-field autofocus single-line v-model="strFiltro" label="Pesquisar Clube" clearable append-icon="mdi-magnify" class='pt-0' outline solo>
 					</v-text-field>
 				</v-flex>
@@ -19,7 +19,10 @@
 				<template v-slot:headers="props" v-if='arClubes.length > 0'>
 					<tr>
 						<th class='text-xs-left'>
-							Nome
+							Clube
+						</th>
+						<th class='text-xs-left'>
+							Categoria
 						</th>
 						<th width='180px' :class="[
                                 'column sortable', 
@@ -39,6 +42,9 @@
 				<template v-slot:items="props">
 					<td>
 						{{ props.item.str_nome }}
+					</td>
+					<td>
+						{{ props.item.str_categoria }}
 					</td>
 					<td class="acao text-xs-center">{{ props.item.updated_at }}</td>
 					<td class='acao text-xs-center'>

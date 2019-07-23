@@ -14,7 +14,18 @@
 		<div class="button-area">
 			<v-btn @click="abreFormClubes();">Clubes</v-btn>
 			<v-btn @click="abreFormJogadores();">Jogadores</v-btn>
-			<v-btn @click="downloadFile();">Download</v-btn>
+			<v-btn @click="downloadFile();" :disabled="timeoutDownload">
+				
+				<span v-if='timeoutDownload'>
+					<v-layout row justify-center align-center>
+						<v-progress-circular indeterminate :size="20" :width="2" color="grey"></v-progress-circular>
+					</v-layout>
+				</span>
+				<span v-else>
+					Download
+				</span>
+				
+			</v-btn>
 		</div>
 	</v-layout>
 

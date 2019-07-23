@@ -19,7 +19,7 @@ class ClubeController extends Controller
     }
 
     public function GetClube(Request $obRequest){
-        $intCod = $obRequest['intCod'];
+        $intCod = intVal($obRequest['intCod']);
         $retorno = $this->service->GetClube($intCod);
         return response(json_encode($retorno),200, ['Content-TYpe' => 'application/json']);
     }

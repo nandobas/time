@@ -22,10 +22,10 @@ class JogadorService
        return $retorno; 
     }
 
-    public function ListarJogadoresTime($int_cod_time)
+    public function ListarJogadoresClube()
     {
         $retorno = [];
-        $retorno['retorno'] = $this->repository->getJogadores($int_cod_time);
+        $retorno['retorno'] = $this->repository->getJogadoresClube();
         $retorno['status']=true; 
         $retorno['codeHTTP']=200;
        

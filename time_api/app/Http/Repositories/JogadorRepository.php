@@ -5,13 +5,16 @@ use App\Http\Models\Jogador;
 
 class JogadorRepository
 {
-    public function getJogadoresTime(int $int_cod_clube){
+    public function getJogadoresClube(){
         
-        $retorno = Jogador::
-                      where('int_cod_clube', '=', $int_cod_clube);       
-        
-        $retorno = $retorno->orderBy('updated_at')
-                    ->get();
+        $retorno = Jogador
+        ::join('clubes', 'clubes.int_cod', '=', 'jogadores.int_cod_clube')
+        ->select(
+            'jogadores.int_cod', 'jogadores.str_nome', 'int_idade', 'str_posicao', 'str_pais', 
+            'clubes.str_nome as str_nome_clube', 'clubes.str_categoria'
+        )
+        ->getQuery()
+        ->get();
 
         if($retorno)
             $retorno = $retorno->toArray();

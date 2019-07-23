@@ -36,7 +36,9 @@ Route::middleware('api')->post('/remover_clube/', 'ClubeController@RemoverClube'
 
 //Jogadores
 Route::middleware('api')->get('/jogadores', 'JogadorController@ListarJogadores');
-Route::middleware('api')->get('/jogadores_time/{int_cod_time}', 'JogadorController@ListarJogadoresTime');
 Route::middleware('api')->get('/jogadores/{int_cod}', 'JogadorController@GetJogador');
 Route::middleware('api')->post('/salvar_jogador/', 'JogadorController@SalvarJogador');
 Route::middleware('api')->post('/remover_jogador/', 'JogadorController@RemoverJogador');
+
+//Arquivo
+Route::middleware('api')->get('/gera_arquivo_csv', 'FileController@geraArquivoCsv');

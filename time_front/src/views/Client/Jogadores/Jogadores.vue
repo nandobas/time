@@ -6,8 +6,8 @@
 
 	<div>
 		<div class="lista-area mt-2">
-			<v-layout v-if='arJogadores.length > 0'>
-				<v-flex xs12 md5>
+			<v-layout >
+				<v-flex xs12 md5 v-if='arJogadores.length > 0'>
 					<v-text-field autofocus single-line v-model="strFiltro" label="Pesquisar Jogador" clearable append-icon="mdi-magnify" class='pt-0' outline solo>
 					</v-text-field>
 				</v-flex>
@@ -203,7 +203,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-layout>
 
 	</v-content>
 
