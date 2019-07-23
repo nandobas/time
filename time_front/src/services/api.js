@@ -5,9 +5,9 @@ export default class Api {
 
 	}
 
-	token = 'x123456a54565s';//localStorage.getItem('token');
+	token = 'x123456a54565s'; //localStorage.getItem('token');
 
-	
+
 	createFormData(formData, key, data) {
 		if (data === Object(data) || Array.isArray(data)) {
 			for (var i in data) {
@@ -19,9 +19,12 @@ export default class Api {
 	}
 
 	post(url, dados) {
-		let header = {'Content-Type': 'application/x-www-form-urlencoded'}
-		return axios.post(process.env.VUE_APP_ROOT_API + url, 
-			dados, header
+		let header = {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		};
+		console.log(process.env.VUE_APP_ROOT_API + url);
+		return axios.post(process.env.VUE_APP_ROOT_API + url,
+				dados, header
 			).then(
 				((response) => {
 					return response.data

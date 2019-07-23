@@ -8,12 +8,12 @@ export default {
 	},
 	data() {
 		return {
-	  
+
 			strTitulo: 'Jogadores',
-			blSalvandoJogador: false,	
+			blSalvandoJogador: false,
 			dialogFormJogador: false,
 			dialogRemover: false,
-	  
+
 			maxPaginas: 5,
 			pagination: {
 				page: 1,
@@ -22,33 +22,33 @@ export default {
 				descending: true,
 			},
 			timeoutPesquisa: true,
-			jogador:{	
+			jogador: {
 				int_cod: 0,
 				int_cod_clube: 0,
 				str_nome: '',
-				int_idade:7,
-				str_posicao:'',
-				str_pais:'',
+				int_idade: 7,
+				str_posicao: '',
+				str_pais: '',
 			},
-			selected_clube:[],
-			arClubes:[],
-			arPosicoes:[
-			'Goleiro',
-			'Zagueiro',
-			'Lateral direito',
-			'Lateral esquerdo',
-			'Líbero',
-			'Volante',
-			'Ala direito',
-			'Ala esquerdo',
-			'Meia-armador',
-			'Médio Centro',
-			'Meio-campo Lateral direito',
-			'Meio-campo Lateral esquerdo',
-			'Meia Ofensivo',
-			'Atacante',
-			'Segundo Atacante',
-			'Centroavante'
+			selected_clube: [],
+			arClubes: [],
+			arPosicoes: [
+				'Goleiro',
+				'Zagueiro',
+				'Lateral direito',
+				'Lateral esquerdo',
+				'Líbero',
+				'Volante',
+				'Ala direito',
+				'Ala esquerdo',
+				'Meia-armador',
+				'Médio Centro',
+				'Meio-campo Lateral direito',
+				'Meio-campo Lateral esquerdo',
+				'Meia Ofensivo',
+				'Atacante',
+				'Segundo Atacante',
+				'Centroavante'
 			],
 			strFiltro: '',
 			arJogadores: [],
@@ -94,16 +94,17 @@ export default {
 		},
 	},
 	methods: {
-		novoJogador(){
+		novoJogador() {
 			this.jogador = {
 				int_cod: 0,
 				int_cod_clube: 0,
 				str_nome: '',
-				int_idade:7,
-				str_posicao:'',
-				str_pais:''
+				int_idade: 7,
+				str_posicao: '',
+				str_pais: ''
 			};
-			selected_clube = [];
+
+			this.selected_clube = [];
 			this.dialogFormJogador = true;
 		},
 		selecionaJogador(p_jogador) {
@@ -111,13 +112,13 @@ export default {
 			this.jogador = p_jogador;
 
 			let int_cod_clube = p_jogador.int_cod_clube;
-			
+
 			let objSelectedClube = [];
 			this.arClubes.forEach(function(value, key) {
 				console.log(int_cod_clube);
 				console.log(value);
-				if(int_cod_clube == value.int_cod)
-				objSelectedClube = value;
+				if (int_cod_clube == value.int_cod)
+					objSelectedClube = value;
 			});
 			this.selected_clube = objSelectedClube;
 		},
@@ -149,16 +150,16 @@ export default {
 				}
 			)
 		},
-		confirmaExclusao(){
+		confirmaExclusao() {
 
 			this.blSalvandoJogador = true;
 
 			var fJogador = new FormData();
 			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
-			
-			this.$root.$api.post('remover_jogador', 
-			fClube
-				).then(
+
+			this.$root.$api.post('remover_jogador',
+				fClube
+			).then(
 
 				(response) => {
 					setTimeout(() => {
@@ -177,9 +178,9 @@ export default {
 			var fJogador = new FormData();
 			this.$root.$api.createFormData(fJogador, 'data', this.jogador);
 
-			this.$root.$api.post('salvar_jogador', 
-			fJogador
-				).then(
+			this.$root.$api.post('salvar_jogador',
+				fJogador
+			).then(
 
 				(response) => {
 					this.jogador.int_cod = response.retorno.int_cod;
