@@ -22,8 +22,9 @@ class Jogadores extends Migration
             $table->foreign('int_cod_clube')->references('int_cod')->on('clubes');
             $table->string('str_nome', 50);
             $table->int('int_idade');
-            $table->string('str_posicao', 20);
-            $table->string('str_pais', 15);
+            $table->string('str_posicao', 20)->nullable();
+            $table->string('str_pais', 15)->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

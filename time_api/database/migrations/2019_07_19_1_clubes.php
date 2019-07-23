@@ -16,9 +16,10 @@ class Clubes extends Migration
         Schema::create('clubes', function (Blueprint $table) {
             $table->increments('int_cod');
             $table->string('str_nome', 50);
-            $table->string('str_escudo', 100);
-            $table->string('str_mascote', 100);
-            $table->string('str_categoria', 15);
+            $table->string('str_escudo', 100)->nullable();
+            $table->string('str_mascote', 100)->nullable();
+            $table->string('str_categoria', 15)->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
