@@ -1,0 +1,21 @@
+@import "@/assets/css/variaveis.scss";
+
+.rbt12 {
+    .container {
+        margin-top: 20px;
+    }
+
+    .table-container {
+        padding: 25px 0 0;
+    }
+
+    .flex-table .flex-row {
+        margin-left: auto;
+
+        &.first {
+            padding: 0 10px;
+            width: calc(100% - (160px * 3));
+            margin-left: 0;
+        }
+    }
+}

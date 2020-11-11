@@ -1,0 +1,26 @@
+@import "@/assets/css/variaveis.scss";
+
+.dropzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .pesquisar {
+        color: $azul-econet;
+        font-weight: 700;
+    }
+
+    .dz-message {
+        text-align: center;
+        margin: 0;
+
+        .v-icon {
+            display: -webkit-box;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.vue-dropzone {
+    border: 2px dashed #e5e5e4;
+}

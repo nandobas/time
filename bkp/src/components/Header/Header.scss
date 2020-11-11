@@ -1,0 +1,33 @@
+@import "@/assets/css/variaveis.scss";
+
+.theme--light.v-toolbar {
+    background-color: transparent;
+    color: $black;
+}
+
+.menu {
+    h3 {
+        font-size: 16px;
+        line-height: 1.6em;
+        color: $primary;
+        margin-bottom: 0px;
+        font-weight: 400;
+    }
+
+    h1 {
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 26px;
+        line-height: 36px;
+        color: $black;
+    }
+
+    &.v-toolbar {
+        -webkit-transition: none;
+        transition: none;
+        box-shadow: none;
+        position: relative;
+        width: 100%;
+        will-change: padding-left, padding-right;
+    }
+}

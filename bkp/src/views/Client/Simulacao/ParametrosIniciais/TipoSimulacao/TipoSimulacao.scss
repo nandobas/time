@@ -1,0 +1,13 @@
+@import "@/assets/css/variaveis.scss";
+
+.tipo-simulacao {
+    fieldset {
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 8px;
+    }
+
+    .loading {
+        padding: 5px 15px 20px;
+    }
+}

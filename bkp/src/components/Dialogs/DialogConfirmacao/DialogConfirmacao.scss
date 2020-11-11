@@ -1,0 +1,68 @@
+@import "@/assets/css/variaveis.scss";
+
+.v-dialog.dialog-confirmacao {
+    /*overflow: hidden;*/
+
+    .v-card__title {
+        /*box-shadow: 0px 1px 3px 0px #d9d9d9;*/
+        z-index: 1;
+
+        .h1 {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .v-card__actions {
+        padding-top: 20px;
+        /*box-shadow: 0px -1px 3px 0px #d9d9d9;*/
+        z-index: 1;
+    }
+
+    .v-card__text {
+        background: #fafafa;
+        box-shadow: 0px 0px 4px 0px #d9d9d9 inset;
+    }
+
+    fieldset {
+        padding: 8px 24px;
+        margin-bottom: 10px;
+
+        .opcao-selecionada {
+            padding: 0 10px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .incidencia {
+            display: list-item;
+            clear: none;
+            color: $azul-econet;
+            font-weight: 500;
+            list-style: none;
+        }
+    }
+
+    .button-area {
+        display: table;
+        width: auto;
+        margin: auto;
+
+        .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+            width: 150px;
+            background-color: $azul-econet;
+            display: inline;
+            margin: 0 5px 10px;
+
+            &.outline {
+                color: $azul-econet;
+                border: 1px solid $azul-econet;
+                background: white;
+
+                .v-btn__content {
+                    margin-top: -2px;
+                }
+            }
+        }
+    }
+}

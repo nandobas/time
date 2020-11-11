@@ -1,0 +1,17 @@
+@import "@/assets/css/variaveis.scss";
+
+.outras-informacoes {
+    .alert-area {
+        .v-alert.warning {
+            text-align: left;
+
+            &:first-child {
+                margin-top: 20px !important;
+            }
+
+            a {
+                color: #187ad2;
+            }
+        }
+    }
+}

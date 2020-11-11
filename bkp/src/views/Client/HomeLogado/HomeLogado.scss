@@ -1,0 +1,191 @@
+@import "@/assets/css/variaveis.scss";
+
+.home-logado {
+    padding: 0 24px 16px 24px;
+
+    h1,
+    .h1 {
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 36px;
+        line-height: 42px;
+        color: #39393e;
+        font-weight: 800;
+    }
+
+    p {
+        font-family: "Asap", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.6em;
+        color: $primary;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        width: 50%;
+    }
+
+    .button-area {
+        .v-btn {
+            text-transform: uppercase;
+            font-size: 14px !important;
+            margin: 30px 5px 30px 0;
+            color: #ffffff;
+            margin-right: 10px;
+            box-shadow: 1px 1px 10px 1px rgba(185, 112, 45, 0.2);
+            height: auto;
+            padding: 0;
+            height: 36px;
+            overflow: hidden;
+
+            .icon {
+                padding: 8px 5px 8px 10px;
+                height: 36px;
+                background-color: #e48413;
+                width: 40px;
+                float: left;
+
+                .v-icon {
+                    position: relative;
+                    float: left;
+                    font-size: 20px;
+                    margin-right: 5px;
+                }
+            }
+
+            span {
+                height: 36px;
+                padding: 8px 15px 8px 15px;
+                float: left;
+                position: relative;
+            }
+
+            a {
+                color: white;
+            }
+
+            &.outline {
+                color: $primary;
+                background: transparent;
+                border: 1px solid $primary;
+                box-shadow: none;
+            }
+
+            .v-btn__content {
+                &:before {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    background-color: #e48413;
+                    position: absolute;
+                    transition: all 0.5s ease;
+                    top: 0;
+                    right: 100%;
+                }
+            }
+
+            &:hover .v-btn__content:before {
+                right: 0;
+            }
+
+            .v-ripple__container {
+                padding: 0;
+            }
+        }
+    }
+
+    .lista-area {
+        margin: 30px 0;
+
+        .lista {
+            /*border: 1px solid;*/
+            border-radius: 2px;
+
+            .theme--light.v-table,
+            .theme--light.v-datatable .v-datatable__actions {
+                background: transparent;
+            }
+
+            .v-datatable.v-table.theme--light {
+                thead {
+                    /*background: $primary;*/
+                    background-color: #e9eeee;
+
+                    tr {
+                        height: 40px;
+
+                        .column {
+                            font-weight: 400;
+                        }
+
+                        &:first-child {
+                            border-bottom: 2px solid $primary;
+                        }
+                    }
+                }
+
+                tbody {
+                    tr {
+                        &:not(:last-child) {
+                            border-bottom: 0;
+                        }
+
+                        &:nth-child(even) {
+                            background-color: $cinza;
+                        }
+
+                        td {
+                            font-family: "Roboto Condensed", sans-serif;
+                            font-size: 14px;
+
+                            .v-icon {
+                                font-size: 20px;
+                                padding: 0 10px;
+                            }
+                        }
+                    }
+                }
+
+                .column {
+                    /*color: white;*/
+                    color: #4f8792;
+                    font-weight: 700;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-family: "Roboto Condensed", sans-serif;
+                }
+            }
+        }
+    }
+
+    .theme--light.v-datatable .v-datatable__actions {
+        border-top: 0;
+    }
+}
+
+.dialog-simulacao {
+    .button-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .v-btn,
+        .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+            box-shadow: none;
+            width: calc(50% - 12px);
+            margin: 0 5px 10px;
+
+            &.outline {
+                background: transparent;
+                color: #e48413;
+                border: 1px solid #e48413;
+                box-shadow: none;
+
+                .v-btn__content {
+                    margin-top: -2px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import "@/assets/css/variaveis.scss";
+
+.dialog-atencao {
+    .button-area {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat) {
+        background-color: $azul-econet;
+        display: table;
+        margin: auto;
+    }
+}
