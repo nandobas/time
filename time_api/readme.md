@@ -1,3 +1,8 @@
+please, read db_mysql script
+and after run in time_api_service
+
+php artisan migrate
+
 docker build -t db_mysql_time ./db_mysql/
 docker run --name db_mysql_service -p 8406:3306 -v db_mysql\data:/var/lib/mysql --restart=always -d db_mysql_time
 
