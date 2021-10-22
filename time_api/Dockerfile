@@ -17,7 +17,7 @@ COPY ./composer.json .
 RUN composer install
 
 COPY ./docker-config/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
-COPY ./docker-config/default.conf /etc/nginx/conf.d
+COPY ./docker-config/default.conf /etc/nginx/http.d
 COPY ./docker-config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY ./docker-config/php.ini /etc/php7/php.ini
 

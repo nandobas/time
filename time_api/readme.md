@@ -1,7 +1,7 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/5b8c451a2cdd7e15f875/maintainability)](https://codeclimate.com/github/tiago-ribeiro-developer/laravel_devops/maintainability)
+docker build -t db_mysql_time ./db_mysql/
+docker run --name db_mysql_service -p 8406:3306 -v db_mysql\data:/var/lib/mysql --restart=always -d db_mysql_time
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/5b8c451a2cdd7e15f875/test_coverage)](https://codeclimate.com/github/tiago-ribeiro-developer/laravel_devops/test_coverage)
-
-[![CircleCI](https://circleci.com/gh/tiago-ribeiro-developer/laravel_devops.svg?style=svg)](https://circleci.com/gh/tiago-ribeiro-developer/laravel_devops)
+docker build -t time_api ./time_api/
+docker run --name time_api_service -p 8084:8000 --link db_mysql_service --restart=always -d time_api
 
 # laravel_devops
