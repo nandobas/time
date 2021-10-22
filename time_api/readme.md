@@ -1,5 +1,12 @@
-please, read db_mysql script
-and after run in time_api_service
+# local:
+## install dependences:
+
+apt-get install php7.1-xml
+sudo apt install composer
+composer install
+
+
+## please, read db_mysql script and after run in time_api_service
 
 php artisan migrate
 
