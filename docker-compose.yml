@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db-mysql:
+    tty: true
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    cap_add:
+      - SYS_NICE #  incluir as regras necessárias para permitir o que o MySQL execute functions
+    container_name: mysql-time
+    environment:
+      MYSQL_ROOT_PASSWORD: db-#14.bas
+    volumes:
+      - ./db-mysql/data:/var/lib/mysql
+    ports:
+      - "8406:3306"
+  time_api:
+    tty: true
+    depends_on:
+      - db-mysql
+    links:
+      - db-mysql
+    image: api
+    container_name: time_api
+    build: "time_api"
+    volumes:
+      - ./time_api:/var/www/html
+    ports:
+      - "8084:80"

@@ -1,0 +1,15 @@
+/*
+MySQL Create database
+Database: time
+Create Date: 2021-05-19 09:22:46
+Author: Fernando Basilio
+*/
+
+CREATE DATABASE IF NOT EXISTS time;
+
+/*
+> use mysql
+> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'db-#14.bas';
+> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+*/

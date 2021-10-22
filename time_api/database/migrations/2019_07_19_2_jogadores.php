@@ -19,9 +19,9 @@ class Jogadores extends Migration
         
         Schema::create('jogadores', function (Blueprint $table) {
             $table->increments('int_cod');
-            $table->int('int_cod_clube');
+            $table->integer('int_cod_clube');
             $table->string('str_nome', 50);
-            $table->int('int_idade');
+            $table->integer('int_idade');
             $table->string('str_posicao', 20)->nullable();
             $table->string('str_pais', 15)->nullable();
             $table->timestamp('deleted_at')->nullable();
