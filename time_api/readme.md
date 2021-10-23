@@ -17,3 +17,5 @@ docker build -t time_api ./time_api/
 docker run --name time_api_service -p 8084:8000 --link db_mysql_service --restart=always -d time_api
 
 # laravel_devops
+
+docker run --name vuejs/draw-front-3d -p 1981:80 -restart=always -d vuejs/newdraw:latest
