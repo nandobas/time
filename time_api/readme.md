@@ -20,5 +20,5 @@ docker run --name time_api_service -p 8084:8000 --link db_mysql_service --restar
 
 docker run --name vuejs/draw-front-3d -p 1981:80 -restart=always -d vuejs/newdraw:latest
 
-
+docker build -t time_front ./time_front/
 docker run --name time_front -p 8084:80 --restart=always -d time_front

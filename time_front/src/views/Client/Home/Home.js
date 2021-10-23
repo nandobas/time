@@ -8,7 +8,7 @@ export default {
 	},
 	data() {
 		return {
-			strTitulo:'Projeto para avaliação VHSYS'
+			strTitulo:'Vamos criar um time?'
 		}
 	},
 	mounted() {
