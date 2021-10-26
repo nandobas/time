@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/setup-node@master
       - run: npm install
-      - run: ./time_front/npm run build
+      - run: npm run build
