@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/setup-node@master
       - run: npm install
-      - run: npm run build  --prefix /home/runner/work/time/time_front/package.json
+      - run: npm run build  --prefix /home/runner/work/time/time_front
